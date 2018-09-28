@@ -1,5 +1,8 @@
 Revision history for Module::Overview
 
+0.02    2018-09-28
+    * fix failing tests due to Class::Accessor::Fast changes in 0.51, reported by eserte
+
 0.01    Date/time
         First version, released on an unsuspecting world.
 
