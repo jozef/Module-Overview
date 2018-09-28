@@ -20,13 +20,13 @@ my $builder = Module::Build->new(
         'Module::ExtractUse'    => 0,
         'Graph::Easy'           => 0,
         'Carp'                  => 0,
+        'List::MoreUtils'       => 0,
     },
     script_files => [
     	'script/plmo'
     ],
     add_to_cleanup => [ 'Module-Overview-*' ],
     create_readme  => 1,
-    sign           => 1,
     meta_merge => {
         resources => {
             repository => 'http://github.com/jozef/Module-Overview',

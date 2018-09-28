@@ -32,6 +32,11 @@ sub main {
 			like($text_simpletable,qr{\|\s$has_to_have[\s\(]},'text_simpletable() contains '.$has_to_have);
 		}
 	};
+	#~ eq_or_diff(
+		#~ $mo->text_simpletable,
+		#~ mo_texttable(),
+		#~ '->text_simpletable()  hide_methods, classes',
+	#~ );
 
 	my $mo2 = Module::Overview->new({
 		'module_name'  => 'M::O',
