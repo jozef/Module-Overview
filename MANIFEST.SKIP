@@ -33,3 +33,4 @@
 
 ^Module-Overview-.*
 ^MYMETA.yml$
+^MYMETA\.json$

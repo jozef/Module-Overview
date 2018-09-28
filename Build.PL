@@ -8,6 +8,7 @@ my $builder = Module::Build->new(
     dist_author       => 'Jozef Kutej <jkutej@cpan.org>',
     dist_version_from => 'lib/Module/Overview.pm',
     
+    configure_requires => { 'Module::Build' => 0.36 },
     build_requires => {
         'Test::More'        => 0,
         'Test::Differences' => 0,
