@@ -17,6 +17,7 @@ my $builder = Module::Build->new(
         'Class::Accessor::Fast' => 0,
         'Class::Sniff'          => 0,
         'Text::SimpleTable'     => 0,
+        'Module::CoreList'      => 0,
         'Module::ExtractUse'    => 0,
         'Graph::Easy'           => 0,
         'Carp'                  => 0,

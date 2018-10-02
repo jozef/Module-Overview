@@ -28,6 +28,7 @@ our $VERSION = '0.02';
 
 use Class::Sniff;
 use Text::SimpleTable;
+use Module::CoreList;
 use Module::ExtractUse;
 use Graph::Easy;
 use Carp 'confess';
@@ -66,6 +67,8 @@ sub get {
     my $sniff = Class::Sniff->new({class => $module_name});
     my $euse  = Module::ExtractUse->new;
 
+    $overview{'is_core'} = Module::CoreList::is_core($module_name);
+    
     #my $graph    = $sniff->graph;   # Graph::Easy
     #print $sniff->report;
     #print join("\n", $sniff->methods), "\n";
@@ -140,6 +143,9 @@ sub text_simpletable {
     my $module_overview = $self->get($module_name);    
     my $table = Text::SimpleTable->new(16, 60);
 
+    $table->row('is_core', $module_overview->{'is_core'} ? 'yes' : 'no');
+    $table->hr;
+    
     $table->row('class', $module_overview->{'class'});
     if ($module_overview->{'parents'} || $module_overview->{'classes'}) {
         $table->hr;
