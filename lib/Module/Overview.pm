@@ -19,6 +19,14 @@ Module::Overview - print/graph module(s) information
     print $DOT $graph->as_graphviz;
     close $DOT;
 
+or from command line:
+
+    $ plmo CGI
+    .------------------+--------------------------------------------------------------.
+    | class            | CGI [core,deprecated]                                        |
+    +------------------+--------------------------------------------------------------+
+    ...
+
 =cut
 
 use warnings;
@@ -329,7 +337,7 @@ Returns L<Graph::Easy> with representation of L</get>.
 
 =head1 SEE ALSO
 
-L<Class::Sniff>, L<Module::ExtractUse>
+L<Class::Sniff>, L<Module::ExtractUse>, L<Perl::PrereqScanner>
 
 =head1 AUTHOR
 
