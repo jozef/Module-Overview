@@ -68,6 +68,7 @@ sub get {
     my $euse  = Module::ExtractUse->new;
 
     $overview{'is_core'} = Module::CoreList::is_core($module_name);
+    $overview{'is_deprecated'} = Module::CoreList::is_deprecated($module_name);
     
     #my $graph    = $sniff->graph;   # Graph::Easy
     #print $sniff->report;
@@ -144,10 +145,12 @@ sub text_simpletable {
     my $module_overview = $self->get($module_name);    
     my $table = Text::SimpleTable->new(16, 60);
 
-    $table->row('is_core', $module_overview->{'is_core'} ? 'yes' : 'no');
-    $table->hr;
-    
-    $table->row('class', $module_overview->{'class'});
+    my @extra_flags;
+    push(@extra_flags, 'core')
+        if $module_overview->{'is_core'};
+    push(@extra_flags, 'deprecated')
+        if $module_overview->{'is_deprecated'};
+    $table->row('class', $module_overview->{'class'}.(@extra_flags ? ' ['.join(',', @extra_flags).']' : ''));
     if ($module_overview->{'parents'} || $module_overview->{'classes'}) {
         $table->hr;
     }
