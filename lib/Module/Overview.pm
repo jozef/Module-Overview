@@ -1,34 +1,5 @@
 package Module::Overview;
 
-=head1 NAME
-
-Module::Overview - print/graph module(s) information
-
-=head1 SYNOPSIS
-
-    use Module::Overview;
-    
-	my $mo = Module::Overview->new({
-		'module_name' => 'Module::Overview',
-	});
-    
-    print $mo->text_simpletable;
-    
-    my $graph = $mo->graph;    # Graph::Easy
-    open my $DOT, '|dot -Tpng -o graph.png' or die ("Cannot open pipe to dot: $!");
-    print $DOT $graph->as_graphviz;
-    close $DOT;
-
-or from command line:
-
-    $ plmo CGI
-    .------------------+--------------------------------------------------------------.
-    | class            | CGI [core,deprecated]                                        |
-    +------------------+--------------------------------------------------------------+
-    ...
-
-=cut
-
 use warnings;
 use strict;
 
@@ -262,6 +233,33 @@ sub graph {
 'OV?';
 
 __END__
+
+=head1 NAME
+
+Module::Overview - print/graph module(s) information
+
+=head1 SYNOPSIS
+
+    use Module::Overview;
+    
+    my $mo = Module::Overview->new({
+        'module_name' => 'Module::Overview',
+    });
+    
+    print $mo->text_simpletable;
+    
+    my $graph = $mo->graph;    # Graph::Easy
+    open my $DOT, '|dot -Tpng -o graph.png' or die ("Cannot open pipe to dot: $!");
+    print $DOT $graph->as_graphviz;
+    close $DOT;
+
+or from command line:
+
+    $ plmo CGI
+    .------------------+--------------------------------------------------------------.
+    | class            | CGI [core,deprecated]                                        |
+    +------------------+--------------------------------------------------------------+
+    ...
 
 =head1 DESCRIPTION
 
