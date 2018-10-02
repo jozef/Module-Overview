@@ -1,5 +1,10 @@
 Revision history for Module::Overview
 
+0.03    2018-10-02
+    * skip false positives from Module::ExtractUse (patch by perlancar)
+    * add information on whether the module is a core module (patch by perlancar)
+    * add information on whether the module is deprecated
+
 0.02    2018-09-28
     * fix failing tests due to Class::Accessor::Fast changes in 0.51, reported by eserte
     * move author tests to xt/ folder

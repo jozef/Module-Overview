@@ -24,7 +24,7 @@ Module::Overview - print/graph module(s) information
 use warnings;
 use strict;
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 use Class::Sniff;
 use Text::SimpleTable;
@@ -334,6 +334,16 @@ L<Class::Sniff>, L<Module::ExtractUse>
 =head1 AUTHOR
 
 jozef@kutej.net, C<< <jkutej at cpan.org> >>
+
+=head1 CONTRIBUTORS
+
+The following people have contributed to the Sys::Path by committing their
+code, sending patches, reporting bugs, asking questions, suggesting useful
+advises, nitpicking, chatting on IRC or commenting on my blog (in no particular
+order):
+
+    eserte
+    perlancar
 
 =head1 LICENSE AND COPYRIGHT
 
