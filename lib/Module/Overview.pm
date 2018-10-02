@@ -97,6 +97,7 @@ sub get {
             grep { (not $recursion_filter) or ($_ =~ m/$recursion_filter/) }   # filter modules
             grep { my $s = $_; none { $_ eq $s } @{$overview{'parents'}} }     # skip parents
             grep { !$skip_kw{$_} }                                             # skip uninteresting
+            grep { $_ =~ m{^\w+(::\w+)*$} }                                    # skip false positives from Module::ExtractUse
             grep { $_ !~ m{^[0-9._]+$} }                                       # skip perl versions
             sort
             $euse->array
