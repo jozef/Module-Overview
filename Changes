@@ -4,6 +4,7 @@ Revision history for Module::Overview
     * skip false positives from Module::ExtractUse (patch by perlancar)
     * add information on whether the module is a core module (patch by perlancar)
     * add information on whether the module is deprecated
+    * add --incluce/-I option to extend @INC of plmo script
 
 0.02    2018-09-28
     * fix failing tests due to Class::Accessor::Fast changes in 0.51, reported by eserte

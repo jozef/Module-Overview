@@ -14,6 +14,8 @@ plmo - Perl module overview
         --graph-type $type   graph type (png|svg|ps|gif|dia|...) see `man dot`
         --recursive          graph recursive
         --filter             regexp to filter out modules that will be considered
+        --include $path / -I $path / -I$path
+                             add $path to Perl include path
 
 =head1 DESCRIPTION
 
@@ -41,6 +43,8 @@ sub main {
     my $text_out;
     my $graph_out;
     my $graph_type = 'png';
+    my @libs;
+    @ARGV = map { (m/^(-I)(.+)$/ ? ($1, $2) : $_) } @ARGV;   # split "-Ipath" (perl-like include) into "-I path"
     GetOptions(
         'help|h'        => \$help,
         'recursive|r'   => \$recursive,
@@ -49,6 +53,7 @@ sub main {
         'text|t'        => \$text_out,
         'graph|g=s'     => \$graph_out,
         'graph_type=s'  => \$graph_type,
+        'include|I=s'   => \@libs,
     ) or pod2usage;
     pod2usage if $help;
     
@@ -58,6 +63,10 @@ sub main {
     $text_out = 1
         if not ( $graph_out or $text_out );
     
+    foreach my $lib (@libs) {
+        unshift @INC, $lib;
+    }
+
     my $mo = Module::Overview->new({
         module_name      => $sniff_class,
         recursive        => $recursive,
